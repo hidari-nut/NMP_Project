@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NMP_Cerbung_Goofy_Goober</string>
+    <string name="usernameInput">Username</string>
+    <string name="passwordInput">Password</string>
+    <string name="btnLogin">LOG IN</string>
+    <string name="btnSignUp">SIGN UP</string>
+    <string name="profPicURL">Profile Picture URL</string>
+    <string name="passConf">Password Confirmation</string>
+    <string name="txtCerbung">CERBUNG</string>
+    <string name="txtSignUp">SIGN UP</string>
 </resources>
