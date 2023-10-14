@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/CerbungImg"
-            tools:srcCompat="@drawable/CerbungImg" />
+            app:srcCompat="@drawable/cerbungimg"
+            tools:srcCompat="@drawable/cerbungimg" />
 
         <TextView
             android:id="@+id/cerbungTitle"

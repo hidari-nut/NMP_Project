@@ -13,12 +13,12 @@ class HomeActivity : AppCompatActivity() {
     var cerbungList = mutableListOf<Cerbungs>()
 
     val cerbungs = arrayOf(
-        Cerbungs(R.drawable.CerbungImg,"Reincarnated as a Surabayans, I now need to deal with hot weather", "Kobo Amane", "Hideo Gosling pemuda dari " +
+        Cerbungs(R.drawable.cerbungimg,"Reincarnated as a Surabayans, I now need to deal with hot weather", "Kobo Amane", "Hideo Gosling pemuda dari " +
                 "negara Ambasing harus menerima takdirnya direinkarnasikan di Surabaya."),
-        Cerbungs(R.drawable.CerbungImg,"The brilliant success of Redd White", "Redd White", "Book about how Redd White easily overcome his struggle to build BLUE CORP."),
-        Cerbungs(R.drawable.CerbungImg,"Bocchi the Guitar Hero", "Edgeworth Von Karma", "Ryan Kojima picks up his guitar and transform into Bocchi, The Guitar Hero!"),
-        Cerbungs(R.drawable.CerbungImg,"Satria Naga Coco", "Rieno Barrack", "Siapa sangka satria yang ini bukanlah sebuah khayalan."),
-        Cerbungs(R.drawable.CerbungImg,"Dodo's Normal Adventure", "Hirahiki Aruku", "Dodo and his Brother, Jio accidentally found a cheap plastic mask in Pasar Atom.")
+        Cerbungs(R.drawable.cerbungimg,"The brilliant success of Redd White", "Redd White", "Book about how Redd White easily overcome his struggle to build BLUE CORP."),
+        Cerbungs(R.drawable.cerbungimg,"Bocchi the Guitar Hero", "Edgeworth Von Karma", "Ryan Kojima picks up his guitar and transform into Bocchi, The Guitar Hero!"),
+        Cerbungs(R.drawable.cerbungimg,"Satria Naga Coco", "Rieno Barrack", "Siapa sangka satria yang ini bukanlah sebuah khayalan."),
+        Cerbungs(R.drawable.cerbungimg,"Dodo's Normal Adventure", "Hirahiki Aruku", "Dodo and his Brother, Jio accidentally found a cheap plastic mask in Pasar Atom.")
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         cerbungList = ArrayList()
         recyclerView = findViewById<View>(R.id.recyclerViewHome) as RecyclerView
         recyclerViewCerbung = RecyclerViewCerbung(this@HomeActivity, cerbungList)
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = recyclerViewCerbung
 

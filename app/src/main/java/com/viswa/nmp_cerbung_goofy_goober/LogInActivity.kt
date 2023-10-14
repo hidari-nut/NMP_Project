@@ -14,17 +14,19 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogInBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_log_in)
+        val view = binding.root
+        setContentView(view)
 
         binding.buttonLogIn.setOnClickListener {
             val enteredUsername = binding.inputUname.text.toString()
             val enteredPassword = binding.inputPwd.text.toString()
 
+            Toast.makeText(this, "blablabla", Toast.LENGTH_SHORT).show()
             if (enteredUsername == username && enteredPassword == password) {
                 Toast.makeText(this, "Correct username and password!", Toast.LENGTH_SHORT).show()
-//                val intent = Intent(this, HomeActivity::class.java)
-//                startActivity(intent)
-//                finish()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
             }
