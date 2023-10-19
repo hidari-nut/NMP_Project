@@ -11,6 +11,10 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
+    companion object{
+        val CERBUNG_ID = "com.viswa.nmp_gerbung_goofy_goober.cerbungID"
+    }
+
     var recyclerView: RecyclerView? = null
     var recyclerViewCerbung: RecyclerViewCerbung? = null
     var cerbungList = mutableListOf<Cerbungs>()

@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 import android.content.Context
+import com.squareup.picasso.Picasso
 
 class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) : RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
 
@@ -26,13 +27,19 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.cerbungTitle.text=cerbungList[position].judul
-        holder.cerbungWriter.text=cerbungList[position].penulis
-        holder.cerbungDesc.text=cerbungList[position].deskripsi
-        holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)
+        holder.cerbungTitle.text = cerbungList[position].judul
+        holder.cerbungWriter.text = cerbungList[position].penulis
+        holder.cerbungDesc.text = cerbungList[position].deskripsi
+
+//        holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)
+        val imgUrl = cerbungList[position].cerbungImg
+        val builder = Picasso.Builder(holder.itemView.context)
+        builder.listener{picasso, uri, exception->exception.printStackTrace()}
+        Picasso.get().load(imgUrl).into(holder.cerbungImg)
 
         holder.cardView.setOnClickListener{
-            val intent = Intent(context, CreateCerbungsActivity::class.java)
+            val intent = Intent(context, CerbungDetailsActivity::class.java)
+            intent.putExtra(HomeActivity.CERBUNG_ID, position)
             context.startActivity(intent)
         }
     }
@@ -42,7 +49,6 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
         val cerbungWriter: TextView = itemView.findViewById(R.id.cerbungWriter)
         val cerbungDesc : TextView = itemView.findViewById(R.id.cerbungDesc)
         val cerbungImg : ImageView = itemView.findViewById(R.id.imageCerbung)
-
         val cardView: CardView = itemView.findViewById(R.id.cardCerbungs)
 
     }

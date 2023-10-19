@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/cerbungTitle"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
             android:text="Placeholder Title"
