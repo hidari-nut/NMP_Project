@@ -1,11 +1,11 @@
 package com.viswa.nmp_cerbung_goofy_goober
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityHomeBinding
-import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityLogInBinding
 
 class HomeActivity : AppCompatActivity() {
 
@@ -35,5 +35,9 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, CreateCerbungsActivity::class.java)
             startActivity(intent)
         }
+
+    }
+    override fun onBackPressed() {
+        Toast.makeText(this, "Don't look back", Toast.LENGTH_SHORT).show()
     }
 }
