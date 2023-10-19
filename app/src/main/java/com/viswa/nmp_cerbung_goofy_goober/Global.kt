@@ -3,6 +3,23 @@ package com.viswa.nmp_cerbung_goofy_goober
 object Global {
 
     val cerbungs = arrayOf(
+        Cerbungs("https://www.worldatlas.com/r/w1200-q80/upload/64/de/e3/shutterstock-520729021.jpg",
+            "The Great Flip: The Sugar-coated Fraud", "Sam L. Jack", 864, "11/9/2023",
+            "The events of The Great Flip, the Biggest Corporate Fraud Scandal of the Silicon Valley.",
+            listOf(CerbungParagraph("The day starts as usual, I wake up, brew myself some coffee, kiss my wife goodbye, " +
+                    "and go off to work, as if it's a normal day. I arrive at my office, the SORA Headquarters in SF. " +
+                    "Not knowing what has happened or what will happen next.",
+                "Sam L. Jack"),
+                CerbungParagraph("I arrived at the parking lot after a long commute, I saw lines of unmarked black cars. " +
+                        "I told myself that it's probably " +
+                        "the government workers working on the project we are contracted for. Then I entered the building, " +
+                        "there's so many agents, FBI, the SEC? what are they doing here?." , "Norm A. Lee"),
+                CerbungParagraph("Now normally, you wouldn't be seeing SEC Agents in the office unless something had happened. " +
+                        "Moments later, I saw our VP, " +
+                        "Mr. Alex Manning escorted out by FBI agents into one of their cars. I was walking around confused, " +
+                        "until I was stopped by an FBI agent myself.", "Yuul B. Alwright")
+            )
+        ),
         Cerbungs("https://public.urbanasia.com/images/post/2020/10/05/1601877074-cuaca-panas-Surbaya---pixabay.jpg",
             "Reincarnated as a Surabayans, I now need to deal with hot weather", "Kobo Amane", 78, "1/1/2023",
             "Hideo Gosling pemuda dari " +
@@ -34,22 +51,5 @@ object Global {
             listOf(CerbungParagraph("Para1 Cerbung5", "Author 5.1"),
                 CerbungParagraph("Para2 Cerbung5", "Author 5.2"))
         ),
-        Cerbungs("https://www.worldatlas.com/r/w1200-q80/upload/64/de/e3/shutterstock-520729021.jpg",
-            "The Great Flip: The Sugar-coated Fraud", "Sam L. Jack", 864, "11/9/2023",
-            "The events of The Great Flip, the Biggest Corporate Fraud Scandal of the Silicon Valley.",
-          listOf(CerbungParagraph("The day starts as usual, I wake up, brew myself some coffee, kiss my wife goodbye, " +
-                  "and go off to work, as if it's a normal day. I arrive at my office, the SORA Headquarters in SF. " +
-                  "Not knowing what has happened or what will happen next.",
-              "Sam L. Jack"),
-              CerbungParagraph("I arrived at the parking lot after a long commute, I saw lines of unmarked black cars. " +
-                      "I told myself that it's probably " +
-                      "the government workers working on the project we are contracted for. Then I entered the building, " +
-                      "there's so many agents, FBI, the SEC? what are they doing here?." , "Norm A. Lee"),
-              CerbungParagraph("Now normally, you wouldn't be seeing SEC Agents in the office unless something had happened. " +
-                      "Moments later, I saw our VP, " +
-                      "Mr. Alex Manning escorted out by FBI agents into one of their cars. I was walking around confused, " +
-                      "until I was stopped by an FBI agent myself.", "Yuul B. Alwright")
-                )
-        )
     )
 }
