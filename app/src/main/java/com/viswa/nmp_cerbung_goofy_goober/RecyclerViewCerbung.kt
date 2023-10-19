@@ -1,5 +1,6 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,9 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
+import android.content.Context
 
-class RecyclerViewCerbung constructor(private val getActivity: HomeActivity, private val cerbungList: List<Cerbungs>): RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
+class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) : RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
 
 
 {
@@ -30,7 +32,8 @@ class RecyclerViewCerbung constructor(private val getActivity: HomeActivity, pri
         holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)
 
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, cerbungList[position].judul, Toast.LENGTH_LONG).show()
+            val intent = Intent(context, CreateCerbungsActivity::class.java)
+            context.startActivity(intent)
         }
     }
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
