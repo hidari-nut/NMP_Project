@@ -20,6 +20,9 @@ class ParagraphAdapter: RecyclerView.Adapter<ParagraphAdapter.ParagraphViewHolde
     }
 
     override fun onBindViewHolder(holder: ParagraphViewHolder, position: Int) {
-        val cerbungImg = Global.cerbungs[Global.currentCerbung].cerbungImg
+        with(holder.binding){
+            txtParagraph.text = Global.cerbungs[Global.currentCerbung].paragraphs[position].paragraphContent
+            txtParagraphAuthor.text = Global.cerbungs[Global.currentCerbung].paragraphs[position].author
+        }
     }
 }

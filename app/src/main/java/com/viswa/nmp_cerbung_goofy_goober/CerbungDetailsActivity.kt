@@ -13,5 +13,8 @@ class CerbungDetailsActivity : AppCompatActivity() {
         binding = ActivityCerbungDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = ParagraphAdapter()
     }
 }
