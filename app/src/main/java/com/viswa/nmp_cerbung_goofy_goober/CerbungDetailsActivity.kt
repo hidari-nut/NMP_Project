@@ -2,6 +2,8 @@ package com.viswa.nmp_cerbung_goofy_goober
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityCerbungDetailsBinding
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityLogInBinding
 import com.squareup.picasso.Picasso
@@ -33,6 +35,8 @@ class CerbungDetailsActivity : AppCompatActivity() {
             txtCreateDate.text = Global.cerbungs[cerbungID].createDate
         }
 
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
+        binding.recyclerView?.layoutManager = layoutManager
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = ParagraphAdapter(cerbungID)
     }
