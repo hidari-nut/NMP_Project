@@ -36,6 +36,7 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
             context.startActivity(intent)
         }
     }
+    //
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
         val cerbungTitle : TextView = itemView.findViewById(R.id.cerbungTitle)
         val cerbungWriter: TextView = itemView.findViewById(R.id.cerbungWriter)
