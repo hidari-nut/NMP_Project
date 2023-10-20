@@ -52,4 +52,12 @@ object Global {
                 CerbungParagraph("Para2 Cerbung5", "Author 5.2"))
         ),
     )
+
+    val genre : Array<Genre> = arrayOf(
+        Genre(1, "Action"),
+        Genre(2, "Horror"),
+        Genre(3, "Psychology"),
+        Genre(4, "Romance"),
+        Genre(5, "Thriller")
+    )
 }
