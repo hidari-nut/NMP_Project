@@ -21,7 +21,7 @@ class LogInActivity : AppCompatActivity() {
             val enteredUsername = binding.inputUname.text.toString()
             val enteredPassword = binding.inputPwd.text.toString()
 
-            Toast.makeText(this, "blablabla", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this, "blablabla", Toast.LENGTH_SHORT).show()
             if (enteredUsername == username && enteredPassword == password) {
                 Toast.makeText(this, "Correct username and password!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
@@ -31,5 +31,10 @@ class LogInActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.buttonSign.setOnClickListener({
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        })
     }
 }

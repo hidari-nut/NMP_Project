@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity" >
+    tools:context=".HomeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHome"
@@ -14,4 +14,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAddCerbung"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:scaleType="center"
+        app:backgroundTint="#D994E4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewHome"
+        app:srcCompat="@drawable/baseline_note_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
