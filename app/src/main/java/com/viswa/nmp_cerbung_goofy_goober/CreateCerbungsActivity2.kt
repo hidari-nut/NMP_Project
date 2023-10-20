@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.RadioButton
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityCreateCerbungs2Binding
 
 class CreateCerbungsActivity2 : AppCompatActivity() {
@@ -22,12 +23,17 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
             finish()
         }
 
-
-        val radioButtonValue = when (binding.accessGroup.checkedRadioButtonId){
-            R.id.restrictedRadioBtn -> "restricted"
-            R.id.publicRadioBtn -> "public"
-            else -> ""
+        var radioButtonValue = ""
+        binding.accessGroup.setOnCheckedChangeListener { radioGroup, id ->
+            var selectedRadio = findViewById<RadioButton>(id)
+            radioButtonValue = selectedRadio.text.toString()
         }
+
+//        val radioButtonValue = when (binding.accessGroup.checkedRadioButtonId){
+//            R.id.restrictedRadioBtn -> "Restricted"
+//            R.id.publicRadioBtn -> "Public"
+//            else -> ""
+//        }
 //        binding.accessGroup.setOnCheckedChangeListener { _, checkedId ->
 //            radioButtonValue = when (checkedId) {
 //                R.id.restrictedRadioBtn -> "restricted"
@@ -39,12 +45,12 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
         binding.nextBtn2.setOnClickListener{
             var editor: SharedPreferences.Editor = shared.edit()
             var firstParagraphText = binding.firstParagraphText.text.toString()
-  //          editor.putString("radioButtonValue", radioButtonValue)
+            editor.putString("radioButtonValue", radioButtonValue)
             editor.putString("firstParagraphText", firstParagraphText)
             editor.apply()
 
             val intent = Intent(this, CreateCerbungsActivity3::class.java)
-            intent.putExtra("radioButtonValue", radioButtonValue)
+//            intent.putExtra("radioButtonValue", radioButtonValue)
 //            intent.putExtra("firstParagraphText", firstParagraphText)
             startActivity(intent)
         }
