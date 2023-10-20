@@ -9,4 +9,12 @@ object Global {
         Cerbungs(R.drawable.cerbungimg,"Satria Naga Coco", "Rieno Barrack", "Siapa sangka satria yang ini bukanlah sebuah khayalan."),
         Cerbungs(R.drawable.cerbungimg,"Dodo's Normal Adventure", "Hirahiki Aruku", "Dodo and his Brother, Jio accidentally found a cheap plastic mask in Pasar Atom.")
     )
+
+    val genre : Array<Genre> = arrayOf(
+        Genre(1, "Action"),
+        Genre(2, "Horror"),
+        Genre(3, "Psychology"),
+        Genre(4, "Romance"),
+        Genre(5, "Thriller")
+    )
 }
