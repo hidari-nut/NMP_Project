@@ -8,4 +8,12 @@
     <string name="passConf">Password Confirmation</string>
     <string name="txtCerbung">CERBUNG</string>
     <string name="txtSignUp">SIGN UP</string>
+<!--    <string-array name="genres">-->
+<!--        <item>Action</item>-->
+<!--        <item>Comedy</item>-->
+<!--        <item>Horror</item>-->
+<!--        <item>Psychology</item>-->
+<!--        <item>Romance</item>-->
+<!--        <item>Thriller</item>-->
+<!--    </string-array>>-->
 </resources>
