@@ -10,7 +10,7 @@
         android:id="@+id/accessGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelAccess">
 
@@ -19,57 +19,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
-            android:text="Restricted" />
+            android:text="@string/radioRestrict" />
 
         <RadioButton
             android:id="@+id/publicRadioBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
-            android:text="Public" />
+            android:text="@string/radioPublic" />
     </RadioGroup>
 
     <Button
         android:id="@+id/nextBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="64dp"
-        android:text="Next"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="68dp"
+        android:text="@string/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstParagraphText" />
+        app:layout_constraintTop_toBottomOf="@+id/cerbungFirstParagLayout" />
 
     <Button
         android:id="@+id/prevBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="82dp"
-        android:text="Prev"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/btnPrev"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstParagraphText" />
+        app:layout_constraintTop_toBottomOf="@+id/cerbungFirstParagLayout" />
 
     <TextView
         android:id="@+id/labelAccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="56dp"
         android:text="Access to this Cerbung"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/firstParagraphText"
-        style="@android:style/Widget.DeviceDefault.EditText"
-        android:layout_width="320dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="63dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Write First Paragraph"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cerbungFirstParagLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="326dp"
+        android:layout_height="162dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accessGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/accessGroup">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstParagraphText"
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:backgroundTint="#FFFFFF"
+            android:focusedByDefault="true"
+            android:hint="@string/labelFirstParag"
+            android:textColorHint="#757575"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

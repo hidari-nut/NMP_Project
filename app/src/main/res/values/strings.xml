@@ -5,6 +5,16 @@
     <string name="btnLogin">LOG IN</string>
     <string name="btnSignUp">SIGN UP</string>
     <string name="profPicURL">Profile Picture URL</string>
+    <string name="labelTitle">Cerbung Title</string>
+    <string name="labelKetentuan">I agree with the rules and polocies in creating Cerbung. This includes not containing racial slurs, discrimination, religion, advertisements, and politics</string>
+    <string name = "radioRestrict">Restricted</string>
+    <string name = "publishButton">Publish This Cerbung</string>
+    <string name = "radioPublic">Public</string>
+    <string name="labelDescription">Short Description</string>
+    <string name="labelUrl">Cerbung Image Cover URL</string>
+    <string name="labelFirstParag">Write First Paragraph</string>
+    <string name="btnPrev">PREV</string>
+    <string name="btnNext">NEXT</string>
     <string name="passConf">Password Confirmation</string>
     <string name="txtCerbung">CERBUNG</string>
     <string name="txtSignUp">SIGN UP</string>

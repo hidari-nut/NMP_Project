@@ -25,9 +25,9 @@ class CreateCerbungsActivity : AppCompatActivity() {
         binding.nextBtn.setOnClickListener(){
             var shared: SharedPreferences = getSharedPreferences("CreateCerbungsPreferences", Context.MODE_PRIVATE)
             var editor: SharedPreferences.Editor = shared.edit()
-            editor.putString("cerbungTitleText", binding.cerbungTitleText.text.toString())
+            editor.putString("cerbungTitleText", binding.titleText.text.toString())
             editor.putString("shortDescriptionText", binding.shortDescriptionText.text.toString())
-            editor.putString("cerbungImageCoverURL", binding.cerbungImageCoverURL.text.toString())
+            editor.putString("cerbungImageCoverURL", binding.urlCoverLayoutText.text.toString())
             editor.putString("chooseGenre", binding.chooseGenreDropDown.selectedItem.toString())
             editor.apply()
 

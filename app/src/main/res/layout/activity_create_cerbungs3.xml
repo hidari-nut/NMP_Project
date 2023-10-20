@@ -10,19 +10,20 @@
         android:id="@+id/accessDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
         android:text="ACCESS"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
 
     <TextView
         android:id="@+id/shortDescriptionDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="SHORT DESCRIPTION"
+        android:layout_marginTop="48dp"
+        android:text="@string/labelDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/genreDisplay" />
 
@@ -30,10 +31,10 @@
         android:id="@+id/titleDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="60dp"
         android:text="TITLE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,8 +42,8 @@
         android:id="@+id/genreDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="52dp"
         android:text="GENRE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
@@ -74,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="20dp"
-        android:text="I agree with the rules and polocies in creating Cerbung. This includes not containing racial slurs, discrimination, religion, advertisements, and politics"
+        android:text="@string/labelKetentuan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paragraphDisplay1" />
 
@@ -84,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
-        android:text="Publish This Cerbung"
+        android:text="@string/publishButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
 
@@ -104,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
-        android:text="Prev"
+        android:text="@string/btnPrev"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
 

@@ -6,51 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".CreateCerbungsActivity">
 
+
     <Button
         android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="36dp"
-        android:text="Next"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="44dp"
+        android:text="@string/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseGenreDropDown" />
 
-    <EditText
-        android:id="@+id/shortDescriptionText"
-        android:layout_width="218dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Short Description"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cerbungDescLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="311dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cerbungTitleText" />
+        app:layout_constraintTop_toBottomOf="@+id/cerbungTitleLayout">
 
-    <EditText
-        android:id="@+id/cerbungTitleText"
-        android:layout_width="214dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Cerbung Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/shortDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:focusedByDefault="false"
+            android:hint="@string/labelDescription"
+            android:textColorHint="#757575"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/cerbungImageCoverURL"
-        android:layout_width="216dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="260dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Cerbung Image Cover URL"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cerbungTitleLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="311dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:defaultFocusHighlightEnabled="true"
+            android:focusedByDefault="true"
+            android:hint="@string/labelTitle"
+            android:textColorHint="#757575"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/urlCoverLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="311dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cerbungDescLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/urlCoverLayoutText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:hint="@string/labelUrl"
+            android:textColorHint="#757575"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/chooseGenreDropDown"
@@ -58,11 +93,12 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cerbungImageCoverURL" />
+        app:layout_constraintTop_toBottomOf="@+id/urlCoverLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

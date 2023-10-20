@@ -25,8 +25,8 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
 
         val radioButtonValue = when (binding.accessGroup.checkedRadioButtonId){
             R.id.restrictedRadioBtn -> "restricted"
-                R.id.publicRadioBtn -> "public"
-                else -> ""
+            R.id.publicRadioBtn -> "public"
+            else -> ""
         }
 //        binding.accessGroup.setOnCheckedChangeListener { _, checkedId ->
 //            radioButtonValue = when (checkedId) {
@@ -39,12 +39,12 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
         binding.nextBtn2.setOnClickListener{
             var editor: SharedPreferences.Editor = shared.edit()
             var firstParagraphText = binding.firstParagraphText.text.toString()
-            editor.putString("radioButtonValue", radioButtonValue.toString())
+  //          editor.putString("radioButtonValue", radioButtonValue)
             editor.putString("firstParagraphText", firstParagraphText)
             editor.apply()
 
             val intent = Intent(this, CreateCerbungsActivity3::class.java)
-//            intent.putExtra("radioButtonValue", radioButtonValue)
+            intent.putExtra("radioButtonValue", radioButtonValue)
 //            intent.putExtra("firstParagraphText", firstParagraphText)
             startActivity(intent)
         }
