@@ -1,5 +1,6 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
+import android.R
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,8 +16,8 @@ class CreateCerbungsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateCerbungsBinding.inflate(layoutInflater)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, Global.genre)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, Global.genre)
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.chooseGenreDropDown.adapter = adapter
 
         setContentView(binding.root)
