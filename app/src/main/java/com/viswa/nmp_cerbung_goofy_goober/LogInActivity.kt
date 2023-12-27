@@ -31,10 +31,10 @@ class LogInActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.buttonSign.setOnClickListener({
+        binding.buttonSign.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()
-        })
+        }
     }
 }
