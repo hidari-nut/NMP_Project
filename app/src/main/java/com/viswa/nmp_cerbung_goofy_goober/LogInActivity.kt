@@ -24,7 +24,7 @@ class LogInActivity : AppCompatActivity() {
             // Toast.makeText(this, "blablabla", Toast.LENGTH_SHORT).show()
             if (enteredUsername == username && enteredPassword == password) {
                 Toast.makeText(this, "Correct username and password!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
