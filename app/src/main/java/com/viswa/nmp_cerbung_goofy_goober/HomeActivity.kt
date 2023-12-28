@@ -40,6 +40,24 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+//        binding.bottomNavigation.setOnItemSelectedListener{
+//            menuItem ->
+//            when (menuItem.itemId){
+//                R.id.itemFollowing -> {
+//                    val intent = Intent(this, FollowingsActivity::class.java)
+//                    startActivity(intent)
+//                    true
+//                }
+//                R.id.itemCreate -> {
+//                    val intent = Intent(this, CreateCerbungsActivity::class.java)
+//                    startActivity(intent)
+//                    true
+//                }
+//
+//                else ->  false
+//            }
+//        }
+
     }
     override fun onBackPressed() {
         Toast.makeText(this, "Don't look back", Toast.LENGTH_SHORT).show()
