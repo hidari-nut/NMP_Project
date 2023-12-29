@@ -14,10 +14,17 @@ import android.content.Context
 import androidx.core.view.marginTop
 import com.squareup.picasso.Picasso
 
-class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) : RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
-
-
+class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) :
+    RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
 {
+    class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        val txtTitle : TextView = itemView.findViewById(R.id.txtTitle)
+        val txtAuthor: TextView = itemView.findViewById(R.id.txtAuthor)
+        val txtDesc : TextView = itemView.findViewById(R.id.txtDesc)
+        val imgCover : ImageView = itemView.findViewById(R.id.imgCover)
+        val cardView: CardView = itemView.findViewById(R.id.cardView)
+
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cerbung_card_item, parent, false)
         return MyViewHolder(view)
@@ -40,19 +47,11 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
 
         holder.cardView.setOnClickListener{
             val intent = Intent(context, CerbungDetailsActivity::class.java)
-            intent.putExtra(HomeActivity.CERBUNG_ID, position)
+            intent.putExtra(HomeFragment.CERBUNG_ID, position)
             context.startActivity(intent)
         }
     }
     //
-    class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val txtTitle : TextView = itemView.findViewById(R.id.txtTitle)
-        val txtAuthor: TextView = itemView.findViewById(R.id.txtAuthor)
-        val txtDesc : TextView = itemView.findViewById(R.id.txtDesc)
-        val imgCover : ImageView = itemView.findViewById(R.id.imgCover)
-        val cardView: CardView = itemView.findViewById(R.id.cardView)
-
-    }
 
 
 

@@ -60,4 +60,6 @@ object Global {
         Genre(4, "Romance"),
         Genre(5, "Thriller")
     )
+
+    val favorite : Array<Int> = arrayOf(1, 3, 4)
 }
