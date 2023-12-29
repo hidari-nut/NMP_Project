@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 import android.content.Context
-import androidx.core.view.marginTop
 import com.squareup.picasso.Picasso
 
 class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) :
@@ -35,7 +32,7 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.txtTitle.text = cerbungList[position].judul
+        holder.txtTitle.text = cerbungList[position].title
         holder.txtAuthor.text = cerbungList[position].penulis
         holder.txtDesc.text = cerbungList[position].deskripsi
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityCerbungDetailsBinding
-import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityLogInBinding
 import com.squareup.picasso.Picasso
 
 class CerbungDetailsActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class CerbungDetailsActivity : AppCompatActivity() {
         with(binding){
             Picasso.get().load(imgUrl).into(imgCover)
 
-            txtTitle.text = Global.cerbungs[cerbungID].judul
+            txtTitle.text = Global.cerbungs[cerbungID].title
             txtParagraphCount.text = Global.cerbungs[cerbungID].paragraphs.size.toString()
             txtLikes.text = Global.cerbungs[cerbungID].likes.toString()
             txtAuthor.text= "by " + Global.cerbungs[cerbungID].penulis

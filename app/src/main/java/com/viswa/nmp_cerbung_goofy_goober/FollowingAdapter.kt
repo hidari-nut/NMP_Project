@@ -20,7 +20,7 @@ class FollowingAdapter constructor(private val userId: String): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
         with(holder.binding){
-            txtFollowingTitle.text = Global.cerbungs[Global.favorite[position]].judul
+            txtFollowingTitle.text = Global.cerbungs[Global.favorite[position]].title
             txtFollowingAuthor.text = "by " + Global.cerbungs[Global.favorite[position]].penulis
             txtFollowingLastUpdate.text = "Last Update: " + Global.cerbungs[Global.favorite[position]].createDate //Change to Create Date
 
