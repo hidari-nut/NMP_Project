@@ -33,6 +33,7 @@ class CreateCerbungsActivity3 : AppCompatActivity() {
         val chooseGenre = shared.getString("chooseGenre", "")
         val firstParagraphText = shared.getString("firstParagraphText", "")
         val restricted = shared.getString("radioButtonValue", "")
+        val genreId = shared.getString("genreId", "")
 
         binding.titleDisplay.text = cerbungTitleText
         binding.genreDisplay.text = chooseGenre
@@ -52,29 +53,25 @@ class CreateCerbungsActivity3 : AppCompatActivity() {
             }
 
             val q = Volley.newRequestQueue(this)
-            val url = "https://ubaya.me/native/160421069/project/login.php"
+            val url = "https://ubaya.me/native/160421069/project/create_cerbung.php"
             var stringRequest = object: StringRequest(
                 Request.Method.POST,
                 url,
                 Response.Listener<String>{
                     val obj = JSONObject(it)
-                    if(obj.getString("result") == "Success"){
-                        val data = obj.getJSONObject("data")
+                    if(obj.getString("result") == "OK"){
 
-                        val sType = object : TypeToken<User>() { }.type
-                        Global.currentUser = Gson().fromJson(data.toString(), sType) as User
-
-                        Toast.makeText(this, "Correct username and password!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Successfully created a Cerbung!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
-                    else if(obj.getString("result") == "Failed"){
-                        Toast.makeText(this, "Username or Password Incorrect!", Toast.LENGTH_LONG).show()
+                    else if(obj.getString("result") == "ERROR"){
+                        Toast.makeText(this, "Failed to create a cerbung! Please try again", Toast.LENGTH_SHORT).show()
                     }
                 },
                 Response.ErrorListener {
-                    Log.e("apiresult", it.message.toString())
+                    Log.e("createcerbungresult", it.message.toString())
                 }
             )
             {
@@ -86,8 +83,8 @@ class CreateCerbungsActivity3 : AppCompatActivity() {
                     params["like_cerbung"] = "0"
                     params["like_paragraph"] = "0"
                     params["restricted"] = restrictedInt.toString()
-                    params["genres_id"] = ""
-                    params["user_id"] = ""
+                    params["genres_id"] = genreId.toString()
+                    params["user_id"] = Global.currentUser.userId.toString()
                     params["paragraph"] = firstParagraphText.toString()
                     return params
                 }

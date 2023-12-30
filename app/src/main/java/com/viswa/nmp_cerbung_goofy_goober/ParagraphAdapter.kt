@@ -11,7 +11,7 @@ class ParagraphAdapter constructor(private val cerbungId: Int): RecyclerView.Ada
     private lateinit var binding:CerbungParagraphCardItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParagraphViewHolder {
-        val binding = CerbungParagraphCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = CerbungParagraphCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ParagraphViewHolder(binding)
     }
 

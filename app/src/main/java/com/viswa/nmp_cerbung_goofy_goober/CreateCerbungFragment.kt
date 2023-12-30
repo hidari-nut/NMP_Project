@@ -63,6 +63,7 @@ class CreateCerbungFragment : Fragment() {
                 editor.putString("shortDescriptionText", binding.shortDescriptionText.text.toString())
                 editor.putString("cerbungImageCoverURL", binding.urlCoverLayoutText.text.toString())
                 editor.putString("chooseGenre", binding.chooseGenreDropDown.selectedItem.toString())
+                editor.putString("genreId", (binding.chooseGenreDropDown.selectedItem as Genre).id.toString())
                 editor.apply()
             }
             val intent = Intent(this.context, CreateCerbungsActivity2::class.java)
