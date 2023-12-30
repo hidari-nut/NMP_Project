@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import com.squareup.picasso.Picasso
 
-class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbungs>) :
+class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbung>) :
     RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
 {
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
@@ -33,11 +33,11 @@ class RecyclerViewCerbung constructor(private val context: Context, private val 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.txtTitle.text = cerbungList[position].title
-        holder.txtAuthor.text = cerbungList[position].penulis
-        holder.txtDesc.text = cerbungList[position].deskripsi
+        holder.txtAuthor.text = cerbungList[position].author_name
+        holder.txtDesc.text = cerbungList[position].description
 
 //        holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)
-        val imgUrl = cerbungList[position].cerbungImg
+        val imgUrl = cerbungList[position].display_picture
         val builder = Picasso.Builder(holder.itemView.context)
         builder.listener{picasso, uri, exception->exception.printStackTrace()}
         Picasso.get().load(imgUrl).into(holder.imgCover)

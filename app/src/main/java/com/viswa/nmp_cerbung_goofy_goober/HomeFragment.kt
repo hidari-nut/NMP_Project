@@ -74,13 +74,14 @@ class HomeFragment : Fragment() {
         val url = "https://ubaya.me/native/160421069/project/read_cerbung.php"
         var stringRequest = StringRequest(Request.Method.POST, url, Response.Listener<String>{
             val obj = JSONObject(it)
-            val data = JSONArray(obj)
+            if(obj.getString("result") == "OK"){
+                val data = obj.getJSONArray("data")
 
-            val sType = object : TypeToken<List<Cerbung>>() { }.type
-            cerbungList = Gson().fromJson(data.toString(), sType) as
-                    ArrayList<Cerbung>
-            Log.d("apiresult", cerbungList.toString())
-
+                val sType = object : TypeToken<List<Cerbung>>() { }.type
+                cerbungList = Gson().fromJson(data.toString(), sType) as
+                        ArrayList<Cerbung>
+//                Log.d("apiresult", cerbungList.toString())
+            }
         },
             Response.ErrorListener {
                 Log.e("apiresult", it.message.toString())

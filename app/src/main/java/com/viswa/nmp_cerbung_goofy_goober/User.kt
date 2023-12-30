@@ -4,4 +4,5 @@ data class User(
     var userId: Number,
     var username: String,
     var profile_picture: String,
+    var created_date: String,
 )
