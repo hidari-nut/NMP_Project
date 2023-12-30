@@ -1,5 +1,14 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
+import android.util.Log
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONObject
+
 object Global {
 
     val cerbungs = arrayOf(
@@ -53,13 +62,17 @@ object Global {
         ),
     )
 
-    val genre : Array<Genre> = arrayOf(
-        Genre(1, "Action"),
-        Genre(2, "Horror"),
-        Genre(3, "Psychology"),
-        Genre(4, "Romance"),
-        Genre(5, "Thriller")
-    )
+//    val genre : Array<Genre> = arrayOf(
+//        Genre(1, "Action"),
+//        Genre(2, "Horror"),
+//        Genre(3, "Psychology"),
+//        Genre(4, "Romance"),
+//        Genre(5, "Thriller")
+//    )
+    var genre : ArrayList<Genre> = arrayListOf()
+
 
     val favorite : Array<Int> = arrayOf(1, 3, 4)
+
+    var currentUser: User = User(0, "default", "url", "created_date")
 }

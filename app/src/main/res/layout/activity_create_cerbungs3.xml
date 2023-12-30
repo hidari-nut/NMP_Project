@@ -6,147 +6,167 @@
     android:layout_height="match_parent"
     tools:context=".CreateCerbungsActivity3">
 
-    <TextView
-        android:id="@+id/titleDisplay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/roboto"
-        android:text="TITLE"
-        android:textAlignment="center"
-        android:textColor="#111111"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/genreDisplay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/roboto"
-        android:text="GENRE"
-        android:textColor="#111111"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
-
-    <TextView
-        android:id="@+id/accessDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/roboto"
-        android:text="ACCESS"
-        android:textColor="#111111"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
-
-    <TextView
-        android:id="@+id/shortDescriptionDisplay"
-        android:layout_width="349dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/labelDescription"
-        android:textColor="#111111"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genreDisplay" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="411dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="84dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paragraphDisplay1">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/straightLin2"
-            android:layout_width="320dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="#000000"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/titleDisplay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="TITLE"
+                android:textAlignment="center"
+                android:textColor="#111111"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="152dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shortDescriptionDisplay">
+            <TextView
+                android:id="@+id/genreDisplay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="GENRE"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
 
-        <View
-            android:id="@+id/straightLine"
-            android:layout_width="320dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="#000000"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/accessDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="ACCESS"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/genreDisplay" />
 
-    <CheckBox
-        android:id="@+id/policyAgreementCheck"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/labelKetentuan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            <TextView
+                android:id="@+id/shortDescriptionDisplay"
+                android:layout_width="349dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/labelDescription"
+                android:textColor="#111111"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accessDisplay" />
 
-    <Button
-        android:id="@+id/publishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/publishButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="411dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shortDescriptionDisplay">
 
-    <TextView
-        android:id="@+id/paragraphDisplay1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/roboto"
-        android:text="FIRST PARAGRAPH"
-        android:textColor="#111111"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                <View
+                    android:id="@+id/straightLin2"
+                    android:layout_width="320dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/prevBtn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/btnPrev"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
+            <TextView
+                android:id="@+id/paragraphDisplay1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto"
+                android:text="FIRST PARAGRAPH"
+                android:textColor="#111111"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paragraphDisplay1">
+
+                <View
+                    android:id="@+id/straightLine"
+                    android:layout_width="320dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/policyAgreementCheck"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="36dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/labelKetentuan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+            <Button
+                android:id="@+id/prevBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/btnPrev"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
+
+            <Button
+                android:id="@+id/publishBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/publishButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/policyAgreementCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

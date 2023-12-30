@@ -1,6 +1,5 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
@@ -17,7 +15,6 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.viswa.nmp_cerbung_goofy_goober.databinding.FragmentHomeBinding
-import org.json.JSONArray
 import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
@@ -71,7 +68,7 @@ class HomeFragment : Fragment() {
 //        cerbungList.addAll(Global.cerbungs) // Add Cerbungs from Global
 
         val q = Volley.newRequestQueue(activity)
-        val url = "https://ubaya.me/native/160421069/project/read_cerbung.php"
+        val url = "https://ubaya.me/native/160421069/project/read_cerbungs.php"
         var stringRequest = StringRequest(Request.Method.POST, url, Response.Listener<String>{
             val obj = JSONObject(it)
             if(obj.getString("result") == "OK"){

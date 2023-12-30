@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import com.squareup.picasso.Picasso
 
-class RecyclerViewCerbung constructor(private val context: Context, private val cerbungList: List<Cerbung>) :
+class RecyclerViewCerbung(private val context: Context, private val cerbungList: MutableList<Cerbung>) :
     RecyclerView.Adapter<RecyclerViewCerbung.MyViewHolder>()
 {
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
