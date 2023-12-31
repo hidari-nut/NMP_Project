@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.viswa.nmp_cerbung_goofy_goober.databinding.FollowingCardItemBinding
 
-class FollowingAdapter constructor(private val userId: String): RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>(){
+class FollowingAdapter constructor(private val followingCerbungList: MutableList<Cerbung>): RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>(){
     class FollowingViewHolder(val binding: FollowingCardItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
@@ -15,16 +15,16 @@ class FollowingAdapter constructor(private val userId: String): RecyclerView.Ada
     }
 
     override fun getItemCount(): Int {
-        return Global.favorite.size
+        return followingCerbungList.size
     }
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
         with(holder.binding){
-            txtFollowingTitle.text = Global.cerbungs[Global.favorite[position]].title
-            txtFollowingAuthor.text = "by " + Global.cerbungs[Global.favorite[position]].penulis
-            txtFollowingLastUpdate.text = "Last Update: " + Global.cerbungs[Global.favorite[position]].createDate //Change to Create Date
+            txtFollowingTitle.text = followingCerbungList[position].title
+            txtFollowingAuthor.text = "by " + followingCerbungList[position].author_name
+            txtFollowingLastUpdate.text = "Last Update: " + followingCerbungList[position].created_date //Change to Create Date
 
-            val imgUrl = Global.cerbungs[Global.favorite[position]].cerbungImg
+            val imgUrl = followingCerbungList[position].display_picture
             val builder = Picasso.Builder(holder.itemView.context)
             builder.listener{picasso, uri, exception->exception.printStackTrace()}
             Picasso.get().load(imgUrl).into(imgCardFollowing)

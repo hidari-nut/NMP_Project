@@ -1,13 +1,21 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.viswa.nmp_cerbung_goofy_goober.databinding.FragmentFollowingBinding
+import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,9 +31,30 @@ class FollowingFragment : Fragment() {
     private lateinit var binding: FragmentFollowingBinding
     var recyclerView: RecyclerView? = null
     var followingAdapter: FollowingAdapter? = null
+    var followingCerbungList = mutableListOf<Cerbung>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.me/native/160421069/project/read_follow_cerbung.php"
+        var stringRequest = StringRequest(
+            Request.Method.POST, url, Response.Listener<String>{
+            val obj = JSONObject(it)
+            if(obj.getString("result") == "OK"){
+                val data = obj.getJSONArray("data")
+
+                val sType = object : TypeToken<List<Cerbung>>() { }.type
+                followingCerbungList = Gson().fromJson(data.toString(), sType) as
+                        ArrayList<Cerbung>
+//                Log.d("apiresult", cerbungList.toString())
+                updateList()
+            }
+        },
+            Response.ErrorListener {
+                Log.e("apiresult", it.message.toString())
+            })
+        q.add(stringRequest)
     }
 
     override fun onCreateView(
@@ -39,10 +68,12 @@ class FollowingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    fun updateList(){
         recyclerView = binding.recyclerViewFollowing
-        followingAdapter = FollowingAdapter("Novella")
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(view.context, 1)
+        followingAdapter = FollowingAdapter(followingCerbungList)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
         recyclerView?.layoutManager = layoutManager
         recyclerView?.adapter = followingAdapter
 
