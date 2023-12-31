@@ -42,7 +42,7 @@ class RecyclerViewCerbung(private val context: Context, private val cerbungList:
         binding.txtTitle.text = cerbungList[position].title
         binding.txtAuthor.text = cerbungList[position].author_name
         binding.txtDesc.text = cerbungList[position].description
-        binding.txtParagraphCount.text = "3"
+        binding.txtParagraphCount.text = cerbungList[position].contribution_count.toString()
         binding.txtLikes.text = cerbungList[position].likes.toString()
 
 //        holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)

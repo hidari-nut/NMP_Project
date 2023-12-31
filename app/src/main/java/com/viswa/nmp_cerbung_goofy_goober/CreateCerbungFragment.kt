@@ -36,6 +36,28 @@ class CreateCerbungFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.me/native/160421069/project/read_genres.php"
+        var stringRequest = StringRequest(
+            Request.Method.POST, url, Response.Listener<String>{
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK"){
+                    val data = obj.getJSONArray("data")
+
+                    val sType = object : TypeToken<ArrayList<Genre>>() { }.type
+                    var genres = Gson().fromJson(data.toString(), sType) as
+                            ArrayList<Genre>
+
+                    Global.genre = genres
+//                    Log.d("genreapi", Global.genre.toString())
+                    updateComboBox()
+                }
+            },
+            Response.ErrorListener {
+                Log.e("genreapi", it.message.toString())
+            })
+        q.add(stringRequest)
     }
 
     override fun onCreateView(
@@ -49,10 +71,6 @@ class CreateCerbungFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val adapter = ArrayAdapter(view.context, R.layout.simple_list_item_1, Global.genre)
-        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-        binding.chooseGenreDropDown.adapter = adapter
 
         binding.nextBtn.setOnClickListener(){
             var shared: SharedPreferences? =
@@ -69,6 +87,14 @@ class CreateCerbungFragment : Fragment() {
             val intent = Intent(this.context, CreateCerbungsActivity2::class.java)
             startActivity(intent)
         }
+    }
+
+    fun updateComboBox(){
+        val adapter = view?.let { ArrayAdapter(it.context, R.layout.simple_list_item_1, Global.genre) }
+        if (adapter != null) {
+            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+        }
+        binding.chooseGenreDropDown.adapter = adapter
     }
 
     companion object {

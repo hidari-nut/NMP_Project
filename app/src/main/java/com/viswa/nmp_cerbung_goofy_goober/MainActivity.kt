@@ -51,26 +51,5 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        val q = Volley.newRequestQueue(this)
-        val url = "https://ubaya.me/native/160421069/project/read_genres.php"
-        var stringRequest = StringRequest(
-            Request.Method.POST, url, Response.Listener<String>{
-                val obj = JSONObject(it)
-                if(obj.getString("result") == "OK"){
-                    val data = obj.getJSONArray("data")
-
-                    val sType = object : TypeToken<ArrayList<Genre>>() { }.type
-                    var genres = Gson().fromJson(data.toString(), sType) as
-                            ArrayList<Genre>
-
-                    Global.genre = genres
-                    Log.d("genreapi", Global.genre.toString())
-                }
-            },
-            Response.ErrorListener {
-                Log.e("genreapi", it.message.toString())
-            })
-        q.add(stringRequest)
-
     }
 }

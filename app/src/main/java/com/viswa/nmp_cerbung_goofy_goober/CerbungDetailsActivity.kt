@@ -2,17 +2,51 @@ package com.viswa.nmp_cerbung_goofy_goober
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.viswa.nmp_cerbung_goofy_goober.databinding.ActivityCerbungDetailsBinding
 import com.squareup.picasso.Picasso
+import org.json.JSONObject
 
 class CerbungDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCerbungDetailsBinding;
     val CERBUNG_ID = HomeActivity.CERBUNG_ID
+
+    lateinit var currentCerbung: Cerbung
+    lateinit var currentCerbungContributions: ArrayList<CerbungContribution>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val q = Volley.newRequestQueue(this)
+        val url = "https://ubaya.me/native/160421069/project/read_cerbung_detail.php"
+        var stringRequest = StringRequest(
+            Request.Method.POST, url, Response.Listener<String>{
+            val obj = JSONObject(it)
+            if(obj.getString("result") == "OK"){
+                val data = obj.getJSONObject("data")
+                val contributions = data.getJSONArray("contributions")
+
+                val sTypeCerbung = object: TypeToken<Cerbung>(){ }.type
+                currentCerbung = Gson().fromJson(data.toString(), sTypeCerbung) as Cerbung
+
+                val sTypeContribution = object : TypeToken<ArrayList<CerbungContribution>>() { }.type
+                currentCerbungContributions = Gson().fromJson(contributions.toString(), sTypeContribution) as
+                        ArrayList<CerbungContribution>
+            }
+        },
+            Response.ErrorListener {
+                Log.e("apiresult", it.message.toString())
+            })
+        q.add(stringRequest)
+
         binding = ActivityCerbungDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

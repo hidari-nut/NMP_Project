@@ -197,12 +197,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="48dp"
-                    android:layout_marginBottom="32dp"
                     android:text="Change Password"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repeatPassLayout" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="411dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnChangePass">
+
+                    <View
+                        android:id="@+id/straightLine2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="#000000"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginBottom="32dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#B23B3B"
+                    android:text="Log Out"
                     app:cornerRadius="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/repeatPassLayout" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
