@@ -18,16 +18,18 @@ import org.json.JSONObject
 class CerbungDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCerbungDetailsBinding;
-    val CERBUNG_ID = HomeActivity.CERBUNG_ID
-
-    lateinit var currentCerbung: Cerbung
-    lateinit var currentCerbungContributions: ArrayList<CerbungContribution>
+    val CERBUNG_ID = HomeFragment.CERBUNG_ID
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var cerbungID = intent.getIntExtra(CERBUNG_ID, 0)
+
+        binding = ActivityCerbungDetailsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val q = Volley.newRequestQueue(this)
         val url = "https://ubaya.me/native/160421069/project/read_cerbung_detail.php"
-        var stringRequest = StringRequest(
+        var stringRequest = object: StringRequest(
             Request.Method.POST, url, Response.Listener<String>{
             val obj = JSONObject(it)
             if(obj.getString("result") == "OK"){
@@ -35,42 +37,47 @@ class CerbungDetailsActivity : AppCompatActivity() {
                 val contributions = data.getJSONArray("contributions")
 
                 val sTypeCerbung = object: TypeToken<Cerbung>(){ }.type
-                currentCerbung = Gson().fromJson(data.toString(), sTypeCerbung) as Cerbung
+                var currentCerbung = Gson().fromJson(data.toString(), sTypeCerbung) as Cerbung
 
                 val sTypeContribution = object : TypeToken<ArrayList<CerbungContribution>>() { }.type
-                currentCerbungContributions = Gson().fromJson(contributions.toString(), sTypeContribution) as
+                var currentCerbungContributions = Gson().fromJson(contributions.toString(), sTypeContribution) as
                         ArrayList<CerbungContribution>
+
+                //Set Cerbung Details
+                val imgUrl = currentCerbung.display_picture
+                val builder = Picasso.Builder(this)
+                builder.listener{picasso, uri, exception->exception.printStackTrace()}
+
+                with(binding){
+                    Picasso.get().load(imgUrl).into(imgCover)
+
+                    txtTitle.text = currentCerbung.title
+                    txtParagraphCount.text = currentCerbung.contribution_count.toString()
+                    txtLikes.text = currentCerbung.likes.toString()
+                    txtAuthor.text = "by " + currentCerbung.author_name
+                    txtCreateDate.text = currentCerbung.created_date
+                }
+
+                val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
+                binding.recyclerView?.layoutManager = layoutManager
+                binding.recyclerView.setHasFixedSize(true)
+                binding.recyclerView.adapter = ParagraphAdapter(currentCerbungContributions)
+
+                Log.e("detailresult", currentCerbungContributions.toString())
             }
         },
             Response.ErrorListener {
-                Log.e("apiresult", it.message.toString())
+                Log.e("apiresult", cerbungID.toString())
             })
-        q.add(stringRequest)
-
-        binding = ActivityCerbungDetailsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
-        var cerbungID = intent.getIntExtra(CERBUNG_ID, 0)
-
-        //Set Cerbung Details
-        val imgUrl = Global.cerbungs[cerbungID].cerbungImg
-        val builder = Picasso.Builder(this)
-        builder.listener{picasso, uri, exception->exception.printStackTrace()}
-
-        with(binding){
-            Picasso.get().load(imgUrl).into(imgCover)
-
-            txtTitle.text = Global.cerbungs[cerbungID].title
-            txtParagraphCount.text = Global.cerbungs[cerbungID].paragraphs.size.toString()
-            txtLikes.text = Global.cerbungs[cerbungID].likes.toString()
-            txtAuthor.text= "by " + Global.cerbungs[cerbungID].penulis
-            txtCreateDate.text = Global.cerbungs[cerbungID].createDate
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val params = HashMap<String, String>()
+                params["cerbung_id"] = cerbungID.toString()
+                return params
+            }
         }
 
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
-        binding.recyclerView?.layoutManager = layoutManager
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = ParagraphAdapter(cerbungID)
+        q.add(stringRequest)
     }
+
 }

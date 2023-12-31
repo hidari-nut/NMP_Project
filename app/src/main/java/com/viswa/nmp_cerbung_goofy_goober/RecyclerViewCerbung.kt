@@ -40,7 +40,7 @@ class RecyclerViewCerbung(private val context: Context, private val cerbungList:
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         binding.txtTitle.text = cerbungList[position].title
-        binding.txtAuthor.text = cerbungList[position].author_name
+        binding.txtAuthor.text = "by " + cerbungList[position].author_name
         binding.txtDesc.text = cerbungList[position].description
         binding.txtParagraphCount.text = cerbungList[position].contribution_count.toString()
         binding.txtLikes.text = cerbungList[position].likes.toString()
@@ -53,7 +53,7 @@ class RecyclerViewCerbung(private val context: Context, private val cerbungList:
 
         binding.cardView.setOnClickListener{
             val intent = Intent(context, CerbungDetailsActivity::class.java)
-            intent.putExtra(HomeFragment.CERBUNG_ID, position)
+            intent.putExtra(HomeFragment.CERBUNG_ID, cerbungList[position].id)
             context.startActivity(intent)
         }
     }
