@@ -97,6 +97,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/switchDarkMode" />
 
+                <Button
+                    android:id="@+id/btnSavePref"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="56dp"
+                    android:text="Save"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switchNotifications" />
+
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="0dp"
@@ -106,7 +116,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/switchNotifications">
+                    app:layout_constraintTop_toBottomOf="@+id/btnSavePref">
 
                     <View
                         android:id="@+id/straightLine"
@@ -140,7 +150,8 @@
                         android:layout_height="match_parent"
                         android:backgroundTint="#FFFFFF"
                         android:fontFamily="@font/roboto"
-                        android:hint="Old Password" />
+                        android:hint="Old Password"
+                        android:password="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -164,7 +175,8 @@
                         android:layout_height="match_parent"
                         android:backgroundTint="#FFFFFF"
                         android:fontFamily="@font/roboto"
-                        android:hint="New Password" />
+                        android:hint="New Password"
+                        android:password="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -188,7 +200,8 @@
                         android:layout_height="match_parent"
                         android:backgroundTint="#FFFFFF"
                         android:fontFamily="@font/roboto"
-                        android:hint="Retype New Password" />
+                        android:hint="Retype New Password"
+                        android:password="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

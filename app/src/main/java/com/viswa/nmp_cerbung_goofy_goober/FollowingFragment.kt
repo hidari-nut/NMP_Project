@@ -35,33 +35,7 @@ class FollowingFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val q = Volley.newRequestQueue(activity)
-        val url = "https://ubaya.me/native/160421069/project/read_follow_cerbung.php"
-        var stringRequest = object: StringRequest(
-            Request.Method.POST, url, Response.Listener<String>{
-            val obj = JSONObject(it)
-            if(obj.getString("result") == "OK"){
-                val data = obj.getJSONArray("data")
-
-                val sType = object : TypeToken<List<Cerbung>>() { }.type
-                followingCerbungList = Gson().fromJson(data.toString(), sType) as
-                        ArrayList<Cerbung>
-//                Log.d("apiresult", cerbungList.toString())
-                updateList()
-            }
-        },
-            Response.ErrorListener {
-                Log.e("apiresult", it.message.toString())
-            })
-        {
-            override fun getParams(): MutableMap<String, String>? {
-                val params = HashMap<String, String>()
-                params["user_id"] = Global.currentUser.userId.toString()
-                return params
-            }
-        }
-        q.add(stringRequest)
+        updateList()
     }
 
     override fun onCreateView(
@@ -77,14 +51,45 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun updateList(){
-        recyclerView = binding.recyclerViewFollowing
-        followingAdapter = FollowingAdapter(followingCerbungList)
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
-        recyclerView?.layoutManager = layoutManager
-        recyclerView?.adapter = followingAdapter
+    override fun onResume() {
+        super.onResume()
+        updateList()
+    }
 
-        followingAdapter?.notifyDataSetChanged()
+    fun updateList(){
+
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.me/native/160421069/project/read_follow_cerbung.php"
+        var stringRequest = object: StringRequest(
+            Request.Method.POST, url, Response.Listener<String>{
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK"){
+                    val data = obj.getJSONArray("data")
+
+                    val sType = object : TypeToken<List<Cerbung>>() { }.type
+                    followingCerbungList = Gson().fromJson(data.toString(), sType) as
+                            ArrayList<Cerbung>
+
+                    recyclerView = binding.recyclerViewFollowing
+                    followingAdapter = FollowingAdapter(followingCerbungList)
+                    val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
+                    recyclerView?.layoutManager = layoutManager
+                    recyclerView?.adapter = followingAdapter
+
+                    followingAdapter?.notifyDataSetChanged()
+                }
+            },
+            Response.ErrorListener {
+                Log.e("apiresult", it.message.toString())
+            })
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val params = HashMap<String, String>()
+                params["user_id"] = Global.currentUser.userId.toString()
+                return params
+            }
+        }
+        q.add(stringRequest)
     }
 
     companion object {

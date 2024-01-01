@@ -3,6 +3,7 @@ package com.viswa.nmp_cerbung_goofy_goober
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
@@ -51,5 +52,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Don't look back", Toast.LENGTH_SHORT).show()
     }
 }

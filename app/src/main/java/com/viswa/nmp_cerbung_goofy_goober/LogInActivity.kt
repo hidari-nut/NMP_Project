@@ -83,4 +83,8 @@ class LogInActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Don't look back", Toast.LENGTH_SHORT).show()
+    }
 }
