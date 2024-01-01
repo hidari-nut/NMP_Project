@@ -1,5 +1,6 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,12 @@ class FollowingAdapter constructor(private val followingCerbungList: MutableList
             builder.listener{picasso, uri, exception->exception.printStackTrace()}
             Picasso.get().load(imgUrl).into(imgCardFollowing)
 
+        }
+
+        holder.binding.cardFollowing.setOnClickListener{
+            val intent = Intent(holder.itemView.context, CerbungDetailsActivity::class.java)
+            intent.putExtra(HomeFragment.CERBUNG_ID, followingCerbungList[position].id)
+            holder.itemView.context.startActivity(intent)
         }
     }
 }

@@ -35,25 +35,26 @@ class HomeFragment : Fragment() {
     var cerbungList = mutableListOf<Cerbung>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        updateList()
 
-        val q = Volley.newRequestQueue(activity)
-        val url = "https://ubaya.me/native/160421069/project/read_cerbungs.php"
-        var stringRequest = StringRequest(Request.Method.POST, url, Response.Listener<String>{
-            val obj = JSONObject(it)
-            if(obj.getString("result") == "OK"){
-                val data = obj.getJSONArray("data")
-
-                val sType = object : TypeToken<List<Cerbung>>() { }.type
-                cerbungList = Gson().fromJson(data.toString(), sType) as
-                        ArrayList<Cerbung>
-//                Log.d("apiresult", cerbungList.toString())
-                updateList()
-            }
-        },
-            Response.ErrorListener {
-                Log.e("apiresult", it.message.toString())
-            })
-        q.add(stringRequest)
+//        val q = Volley.newRequestQueue(activity)
+//        val url = "https://ubaya.me/native/160421069/project/read_cerbungs.php"
+//        var stringRequest = StringRequest(Request.Method.POST, url, Response.Listener<String>{
+//            val obj = JSONObject(it)
+//            if(obj.getString("result") == "OK"){
+//                val data = obj.getJSONArray("data")
+//
+//                val sType = object : TypeToken<List<Cerbung>>() { }.type
+//                cerbungList = Gson().fromJson(data.toString(), sType) as
+//                        ArrayList<Cerbung>
+////                Log.d("apiresult", cerbungList.toString())
+//                updateList()
+//            }
+//        },
+//            Response.ErrorListener {
+//                Log.e("apiresult", it.message.toString())
+//            })
+//        q.add(stringRequest)
 
 //        recyclerView = binding.recyclerViewHome
 //        recyclerViewCerbung = context?.let { RecyclerViewCerbung(it, cerbungList) }
@@ -84,14 +85,37 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-    fun updateList(){
-        recyclerView = binding.recyclerViewHome
-        recyclerViewCerbung = context?.let { RecyclerViewCerbung(it, cerbungList) }
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
-        recyclerView?.layoutManager = layoutManager
-        recyclerView?.adapter = recyclerViewCerbung
 
-        recyclerViewCerbung?.notifyDataSetChanged()
+    override fun onResume() {
+        super.onResume()
+
+        updateList()
+    }
+    fun updateList(){
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.me/native/160421069/project/read_cerbungs.php"
+        var stringRequest = StringRequest(Request.Method.POST, url, Response.Listener<String>{
+            val obj = JSONObject(it)
+            if(obj.getString("result") == "OK"){
+                val data = obj.getJSONArray("data")
+
+                val sType = object : TypeToken<List<Cerbung>>() { }.type
+                cerbungList = Gson().fromJson(data.toString(), sType) as
+                        ArrayList<Cerbung>
+//                Log.d("apiresult", cerbungList.toString())
+                recyclerView = binding.recyclerViewHome
+                recyclerViewCerbung = context?.let { RecyclerViewCerbung(it, cerbungList) }
+                val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 1)
+                recyclerView?.layoutManager = layoutManager
+                recyclerView?.adapter = recyclerViewCerbung
+
+                recyclerViewCerbung?.notifyDataSetChanged()
+            }
+        },
+            Response.ErrorListener {
+                Log.e("apiresult", it.message.toString())
+            })
+        q.add(stringRequest)
     }
 
     companion object {

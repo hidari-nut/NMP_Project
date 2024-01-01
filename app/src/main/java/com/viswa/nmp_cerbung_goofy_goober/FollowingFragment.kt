@@ -38,7 +38,7 @@ class FollowingFragment : Fragment() {
 
         val q = Volley.newRequestQueue(activity)
         val url = "https://ubaya.me/native/160421069/project/read_follow_cerbung.php"
-        var stringRequest = StringRequest(
+        var stringRequest = object: StringRequest(
             Request.Method.POST, url, Response.Listener<String>{
             val obj = JSONObject(it)
             if(obj.getString("result") == "OK"){
@@ -54,6 +54,13 @@ class FollowingFragment : Fragment() {
             Response.ErrorListener {
                 Log.e("apiresult", it.message.toString())
             })
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val params = HashMap<String, String>()
+                params["user_id"] = Global.currentUser.userId.toString()
+                return params
+            }
+        }
         q.add(stringRequest)
     }
 
