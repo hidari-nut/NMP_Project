@@ -56,6 +56,19 @@ class CerbungDetailsActivity : AppCompatActivity() {
                     txtLikes.text = currentCerbung.likes.toString()
                     txtAuthor.text = "by " + currentCerbung.author_name
                     txtCreateDate.text = currentCerbung.created_date
+
+
+                    Log.e("resultsomething2", currentCerbung.user_like.toString())
+                    Log.e("resultsomething3", data.toString())
+
+                    if(currentCerbung.user_like == 1){
+                        imgbtnLikeCerbung.setImageResource(R.drawable.baseline_favorite_24)
+                    }
+
+                    if(currentCerbung.user_follow == 1){
+                        imgbtnFollowCerbung.setImageResource(R.drawable.baseline_bookmark_added_24)
+                    }
+
                 }
 
                 val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
@@ -73,11 +86,80 @@ class CerbungDetailsActivity : AppCompatActivity() {
             override fun getParams(): MutableMap<String, String>? {
                 val params = HashMap<String, String>()
                 params["cerbung_id"] = cerbungID.toString()
+                params["user_id"] = Global.currentUser.userId.toString()
                 return params
             }
         }
 
         q.add(stringRequest)
+
+        binding.imgbtnLikeCerbung.setOnClickListener{
+
+//            val q = Volley.newRequestQueue(this)
+//            val url = "https://ubaya.me/native/160421069/project/update_like_cerbung.php"
+//            var stringRequest = object: StringRequest(
+//                Request.Method.POST, url, Response.Listener<String>{
+//                    val obj = JSONObject(it)
+//                    if(obj.getString("result") == "OK"){
+//                        val data = obj.getJSONObject("data")
+//
+//                    }
+//                    Log.e("likeresult", obj.toString())
+//                    Log.e("resultsomething", "WHAT IS GOING ON")
+//
+//                },
+//                Response.ErrorListener {
+//                    Log.e("likeresult", it.message.toString())
+//                })
+//            {
+//                override fun getParams(): MutableMap<String, String>? {
+//                    val params = HashMap<String, String>()
+//                    if(currentCerbung?.user_like == 1){
+//                        params["likes"] = "0"
+//                    }
+//                    else{
+//                        params["likes"] = "1"
+//                    }
+//                    params["cerbung_id"] = cerbungID.toString()
+//                    params["user_id"] = Global.currentUser.userId.toString()
+//                    return params
+//                }
+//            }
+//            q.add(stringRequest)
+        }
+
+        binding.imgbtnFollowCerbung.setOnClickListener{
+
+//            val q = Volley.newRequestQueue(this)
+//            val url = "https://ubaya.me/native/160421069/project/update_follow_cerbung.php"
+//            var stringRequest = object: StringRequest(
+//                Request.Method.POST, url, Response.Listener<String>{
+//                    val obj = JSONObject(it)
+//                    if(obj.getString("result") == "OK"){
+//                        val data = obj.getJSONObject("data")
+//
+//                    }
+//                    Log.e("followresult", obj.toString())
+//                },
+//                Response.ErrorListener {
+//                    Log.e("followresult", it.message.toString())
+//                })
+//            {
+//                override fun getParams(): MutableMap<String, String>? {
+//                    val params = HashMap<String, String>()
+//                    if(currentCerbung?.user_follow == 1){
+//                        params["follows"] = "0"
+//                    }
+//                    else{
+//                        params["follows"] = "1"
+//                    }
+//                    params["cerbung_id"] = cerbungID.toString()
+//                    params["user_id"] = Global.currentUser.userId.toString()
+//                    return params
+//                }
+//            }
+//            q.add(stringRequest)
+        }
     }
 
 }

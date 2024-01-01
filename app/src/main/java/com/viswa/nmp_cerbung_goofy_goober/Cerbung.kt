@@ -14,6 +14,8 @@ data class Cerbung(
     @SerializedName("genre_name") var genre_name: String,
     @SerializedName("user_id") var author_id: Int,
     @SerializedName("user_username") var author_name: String,
+    @SerializedName("user_like_cerbung") var user_like: Int,
+    @SerializedName("user_follow_cerbung") var user_follow: Int,
     @SerializedName("cerbung_contribution_count") var contribution_count: Int,
 
 )
