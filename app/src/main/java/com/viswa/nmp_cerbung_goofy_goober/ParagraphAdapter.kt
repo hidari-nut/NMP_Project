@@ -25,6 +25,7 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
         return cerbungContributions.size
     }
 
+
     override fun onBindViewHolder(holder: ParagraphViewHolder, position: Int) {
         with(holder.binding){
             txtParagraph.text = cerbungContributions[position].paragraph
@@ -39,6 +40,7 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
         }
 
         binding.imgbtnLike.setOnClickListener{
+
             val q = Volley.newRequestQueue(holder.itemView.context)
             val url = "https://ubaya.me/native/160421069/project/update_like_paragraph.php"
             var stringRequest = object: StringRequest(
@@ -47,12 +49,15 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
                     if(obj.getString("result") == "OK"){
                         if(cerbungContributions[holder.adapterPosition].user_like == 1){
                             cerbungContributions[holder.adapterPosition].user_like = 0
-                            binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_border_24)
+                            holder.binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_border_24)
                         }
                         else{
                             cerbungContributions[holder.adapterPosition].user_like = 1
-                            binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_24)
+                            holder.binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_24)
                         }
+
+                        // Notify the adapter that the data has changed
+                        notifyDataSetChanged()
                     }
                     Log.e("likeresult", obj.toString())
 
@@ -75,6 +80,13 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
                 }
             }
             q.add(stringRequest)
+
+//            if(cerbungContributions[holder.adapterPosition].user_like == 0){
+//                holder.binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_border_24)
+//            }
+//            else{
+//                holder.binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_24)
+//            }
         }
     }
 }
