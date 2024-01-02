@@ -29,6 +29,13 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
         with(holder.binding){
             txtParagraph.text = cerbungContributions[position].paragraph
             txtParagraphAuthor.text = cerbungContributions[position].author_name
+
+            if(cerbungContributions[holder.adapterPosition].user_like == 0){
+                binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_border_24)
+            }
+            else{
+                binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_24)
+            }
         }
 
         binding.imgbtnLike.setOnClickListener{
@@ -38,12 +45,12 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
                 Request.Method.POST, url, Response.Listener<String>{
                     val obj = JSONObject(it)
                     if(obj.getString("result") == "OK"){
-                        if(cerbungContributions[holder.bindingAdapterPosition].user_like == 1){
-                            cerbungContributions[holder.bindingAdapterPosition].user_like = 0
+                        if(cerbungContributions[holder.adapterPosition].user_like == 1){
+                            cerbungContributions[holder.adapterPosition].user_like = 0
                             binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_border_24)
                         }
                         else{
-                            cerbungContributions[holder.bindingAdapterPosition].user_like = 1
+                            cerbungContributions[holder.adapterPosition].user_like = 1
                             binding.imgbtnLike.setImageResource(R.drawable.baseline_favorite_24)
                         }
                     }
@@ -56,13 +63,13 @@ class ParagraphAdapter constructor(private val cerbungContributions: ArrayList<C
             {
                 override fun getParams(): MutableMap<String, String>? {
                     val params = HashMap<String, String>()
-                    if(cerbungContributions[holder.bindingAdapterPosition].user_like == 1){
+                    if(cerbungContributions[holder.adapterPosition].user_like == 1){
                         params["likes"] = "0"
                     }
                     else{
                         params["likes"] = "1"
                     }
-                    params["contribution_id"] = cerbungContributions[holder.bindingAdapterPosition].id.toString()
+                    params["contribution_id"] = cerbungContributions[holder.adapterPosition].id.toString()
                     params["user_id"] = Global.currentUser.userId.toString()
                     return params
                 }

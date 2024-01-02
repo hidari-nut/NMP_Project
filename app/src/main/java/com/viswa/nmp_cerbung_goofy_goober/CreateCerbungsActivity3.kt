@@ -80,8 +80,8 @@ class CreateCerbungsActivity3 : AppCompatActivity() {
                     params["title"] = cerbungTitleText.toString()
                     params["description"] = shortDescriptionText.toString()
                     params["display_picture"] = cerbungImageCoverURL.toString()
-                    params["like_cerbung"] = "0"
-                    params["like_paragraph"] = "0"
+//                    params["like_cerbung"] = "0"
+//                    params["like_paragraph"] = "0"
                     params["restricted"] = restrictedInt.toString()
                     params["genres_id"] = genreId.toString()
                     params["user_id"] = Global.currentUser.userId.toString()

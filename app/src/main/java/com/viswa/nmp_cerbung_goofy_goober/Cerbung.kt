@@ -16,6 +16,7 @@ data class Cerbung(
     @SerializedName("user_username") var author_name: String = "",
     @SerializedName("user_like_cerbung") var user_like: Int = 0,
     @SerializedName("user_follow_cerbung") var user_follow: Int = 0,
+    @SerializedName("user_add_permission") var user_permitted: Int = 0,
     @SerializedName("cerbung_contribution_count") var contribution_count: Int = 0,
 
 )
