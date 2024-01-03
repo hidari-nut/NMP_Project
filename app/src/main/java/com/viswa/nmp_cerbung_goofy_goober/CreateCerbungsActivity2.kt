@@ -17,8 +17,6 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
         binding = ActivityCreateCerbungs2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var shared: SharedPreferences = getSharedPreferences("CreateCerbungsPreferences", Context.MODE_PRIVATE)
-
         binding.prevBtn.setOnClickListener{
             finish()
         }
@@ -29,20 +27,8 @@ class CreateCerbungsActivity2 : AppCompatActivity() {
             radioButtonValue = selectedRadio.text.toString()
         }
 
-//        val radioButtonValue = when (binding.accessGroup.checkedRadioButtonId){
-//            R.id.restrictedRadioBtn -> "Restricted"
-//            R.id.publicRadioBtn -> "Public"
-//            else -> ""
-//        }
-//        binding.accessGroup.setOnCheckedChangeListener { _, checkedId ->
-//            radioButtonValue = when (checkedId) {
-//                R.id.restrictedRadioBtn -> "restricted"
-//                R.id.publicRadioBtn -> "public"
-//                else -> ""
-//            }
-//        }
-
         binding.nextBtn2.setOnClickListener{
+            var shared: SharedPreferences = this.getSharedPreferences("CreateCerbungsPreferences", Context.MODE_PRIVATE)
             var editor: SharedPreferences.Editor = shared.edit()
             var firstParagraphText = binding.firstParagraphText.text.toString()
             editor.putString("radioButtonValue", radioButtonValue)

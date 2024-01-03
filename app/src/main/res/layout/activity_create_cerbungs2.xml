@@ -10,7 +10,7 @@
         android:id="@+id/accessGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelAccess">
 
@@ -33,8 +33,8 @@
         android:id="@+id/nextBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="48dp"
         android:text="@string/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cerbungFirstParagLayout" />
@@ -43,8 +43,8 @@
         android:id="@+id/prevBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
         android:text="@string/btnPrev"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cerbungFirstParagLayout" />
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="48dp"
         android:text="Access to this Cerbung"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,9 +62,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cerbungFirstParagLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="326dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="52dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/firstParagraphText"
             android:layout_width="match_parent"
-            android:layout_height="152dp"
+            android:layout_height="match_parent"
             android:backgroundTint="#FFFFFF"
             android:focusedByDefault="true"
             android:hint="@string/labelFirstParag"
