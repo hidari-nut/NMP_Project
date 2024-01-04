@@ -16,14 +16,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".fragment_respond"
+            android:exported="true"
+            android:label="@string/title_activity_fragment_respond"
+            android:theme="@style/Theme.NMP_Cerbung_Goofy_Goober">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".CreateCerbungsActivity3"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".CreateCerbungsActivity2"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
@@ -41,7 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".CreateCerbungsActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".CerbungDetailsActivity"
             android:exported="false" />
