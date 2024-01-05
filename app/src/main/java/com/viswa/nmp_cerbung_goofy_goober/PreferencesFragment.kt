@@ -1,5 +1,6 @@
 package com.viswa.nmp_cerbung_goofy_goober
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.squareup.picasso.Picasso
 import com.viswa.nmp_cerbung_goofy_goober.databinding.FragmentPreferencesBinding
 import org.json.JSONObject
 
@@ -41,7 +43,15 @@ class PreferencesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentPreferencesBinding.inflate(inflater, container, false)
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val imgUrl = Global.currentUser.profile_picture
+        Picasso.get().load(imgUrl).into(binding.imgProfilePicPref)
     }
 
     override fun onResume() {
@@ -52,12 +62,19 @@ class PreferencesFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        val builder = Picasso.Builder(context)
+        builder.listener{picasso, uri, exception->exception.printStackTrace()}
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding){
-            usernameInput.setText(Global.currentUser.username)
-        }
+        UpdateUser()
+
+        binding.usernameInput.setText(Global.currentUser.username)
 
         binding.switchDarkMode.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){

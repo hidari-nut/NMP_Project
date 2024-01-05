@@ -121,7 +121,9 @@ class CerbungDetailsActivity : AppCompatActivity() {
         }
 
         binding.buttonSubmitRequest.setOnClickListener{
-            if(currentCerbung.user_permitted == 0 && currentCerbung.restricted == 1 && Global.currentUser.userId != currentCerbung.author_id){
+            if((currentCerbung.user_permitted == 0)
+                && (currentCerbung.restricted == 1)
+                && (Global.currentUser.userId.toString() != currentCerbung.author_id.toString())){
                 Toast.makeText(this, "Request sent!", Toast.LENGTH_SHORT).show()
             }
             else{
@@ -200,7 +202,9 @@ class CerbungDetailsActivity : AppCompatActivity() {
                             imgbtnFollowCerbung.setImageResource(R.drawable.baseline_bookmark_added_24)
                         }
 
-                        if(currentCerbung.user_permitted == 0 && currentCerbung.restricted == 1 && Global.currentUser.userId != currentCerbung.author_id){
+                        if((currentCerbung.user_permitted == 0)
+                            && (currentCerbung.restricted == 1)
+                            && (Global.currentUser.userId.toString() != currentCerbung.author_id.toString())){
                             binding.addParagraphInput.hint = "This Cerbung is Restricted, Request permission from author to Contribute."
                             binding.addParagraphInput.isEnabled = false
                             binding.buttonSubmitRequest.text = "Request to Contribute"

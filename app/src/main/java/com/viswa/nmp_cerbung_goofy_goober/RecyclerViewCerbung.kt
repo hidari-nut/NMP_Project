@@ -45,7 +45,7 @@ class RecyclerViewCerbung(private val context: Context, private val cerbungList:
         binding.txtParagraphCount.text = cerbungList[position].contribution_count.toString()
         binding.txtLikes.text = cerbungList[position].likes.toString()
 
-//        holder.cerbungImg.setImageResource(cerbungList[position].cerbungImg)
+
         val imgUrl = cerbungList[position].display_picture
         val builder = Picasso.Builder(holder.itemView.context)
         builder.listener{picasso, uri, exception->exception.printStackTrace()}
